@@ -1,8 +1,11 @@
 .Card {
   background-color: #eee;
-  padding: 15px;
-  border-radius: 4px;
-  background-size: cover;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  background-repeat: no-repeat;
+  background-size: 1600px 1200px;
+  font-size: 0.8em;
 }
 
 .doublerow {

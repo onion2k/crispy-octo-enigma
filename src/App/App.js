@@ -7,19 +7,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card double></Card>
+        <Card doublerow doubleheight image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
         <Card></Card>
         <Card></Card>
-        <Card double></Card>
+        <Card doublerow image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
         <Card></Card>
-        <Card double></Card>
+        <Card doublerow image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
         <Card></Card>
-        <Card double></Card>
+        <Card doublerow image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
         <Card></Card>
-        <Card double></Card>
+        <Card doublerow image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
         <Card></Card>
-        <Card double></Card>
-        <Card double></Card>
+        <Card doublerow image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
+        <Card doublerow image="https://source.unsplash.com/800x600/?technology,pattern"></Card>
+        <Card></Card>
+        <Card></Card>
       </div>
     );
   }

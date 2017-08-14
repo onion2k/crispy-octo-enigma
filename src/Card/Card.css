@@ -32,3 +32,33 @@
 .doubleheight {
   grid-column: span 2;
 }
+
+/* for-phone-only */
+@media (max-width: 599px) { 
+  .doublerow    { grid-row: span 1; }
+  .doubleheight { grid-column: span 1; }
+}
+
+/* for-tablet-portrait-up */
+@media (min-width: 600px) { 
+  .doublerow    { grid-row: span 1; }
+  .doubleheight { grid-column: span 1; }
+}
+
+/* for-tablet-landscape-up */
+@media (min-width: 900px) { 
+  .doublerow    { grid-row: span 2; }
+  .doubleheight { grid-column: span 2; }
+}
+
+/* for-desktop-up */
+@media (min-width: 1200px) { 
+  .doublerow    { grid-row: span 2; }
+  .doubleheight { grid-column: span 2; }
+}
+
+/* for-big-desktop-up */
+@media (min-width: 1800px) { 
+  .doublerow    { grid-row: span 2; }
+  .doubleheight { grid-column: span 2; }
+}

@@ -2,6 +2,10 @@
 
 First go at using React to display stuff nicely.
 
-#Todo
+# Todo
 
-Better mobile layout
+* Better mobile layout
+* Image scaling
+* API
+* URL sharing
+* Layout building

@@ -4,7 +4,7 @@
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 
 /* for-phone-only */
@@ -27,7 +27,7 @@
 @media (min-width: 900px) { 
   .App { 
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
   }
  }
 
@@ -35,7 +35,7 @@
 @media (min-width: 1200px) { 
   .App { 
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
   }
  }
 

@@ -30,17 +30,22 @@ class App extends Component {
       'https://source.unsplash.com/1600x900/daily?tree',
       'https://source.unsplash.com/1600x900/daily?nasa'
     ];
-    let tiles = this.resolveTileConstraints(images, 4, 5, 2, 2);
+    let tiles = this.resolveTileConstraints(images, 4, 4, 2, 2);
     this.state = { overrideUrl: null, tiles: tiles };
   }
   resolveTileConstraints(images, sizew, sizeh, maxw, maxh) {
 
     let tiles = [];
 
-    for (let t = 0; t < sizew*sizeh; t++) {
+    for (let t = 0; t < (sizew*sizeh) - 4; t++) {
         tiles[t] = { row: false, column: false, image: images[t]};
     }
 
+    tiles[2].row = true;
+    tiles[2].column = true;
+
+    tiles[5].row = true;
+    
     return tiles;
 
     // return [

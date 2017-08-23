@@ -9,9 +9,9 @@ class Card extends Component {
 
     super();
     this.image = props.image;
-    this.inlineStyle = { backgroundImage: "url(" + this.image + ")" };
     this.state = { t:0, l:0 };
-
+    this.inlineStyle = { backgroundImage: "url(" + this.image + ")", backgroundPosition: "0px 0px" };
+    
   }
 
   componentDidMount(){
@@ -23,15 +23,18 @@ class Card extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    
     this.inlineStyle['backgroundImage'] = (nextProps.override) ? "url(" + nextProps.override + ")" : "url(" + this.image + ")";
     this.forceUpdate();
+
   }
 
   render() {
+    var clone = Object.assign({}, this.inlineStyle);
     return (
       <div 
         className={ classNames( 'Card', { 'doublerow': this.props.doublerow }, { 'doubleheight': this.props.doubleheight } ) } 
-        style={ this.inlineStyle }
+        style={ clone }
         onMouseEnter={ this.props.onMouseEnter }
         onMouseLeave={ this.props.onMouseLeave }
         ></div>

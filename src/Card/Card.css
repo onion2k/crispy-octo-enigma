@@ -4,7 +4,7 @@
   border-radius: 2px;
   border: 1px solid #000;
   background-repeat: no-repeat;
-  background-size: 1600px 1200px;
+  background-size: auto 1200px;
   font-size: 0.8em;
   transition: background 0.2s linear;
 }
@@ -24,6 +24,13 @@
 .Card:nth-of-type(13) { transition-delay: 0.325s; }
 .Card:nth-of-type(14) { transition-delay: 0.35s; }
 .Card:nth-of-type(15) { transition-delay: 0.375s; }
+.Card:nth-of-type(16) { transition-delay: 0.4s; }
+.Card:nth-of-type(17) { transition-delay: 0.425s; }
+.Card:nth-of-type(18) { transition-delay: 0.45s; }
+.Card:nth-of-type(19) { transition-delay: 0.475s; }
+.Card:nth-of-type(20) { transition-delay: 0.5s; }
+.Card:nth-of-type(21) { transition-delay: 0.525s; }
+.Card:nth-of-type(22) { transition-delay: 0.55s; }
 
 .doublerow {
   grid-row: span 2;

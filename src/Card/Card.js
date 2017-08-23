@@ -9,7 +9,6 @@ class Card extends Component {
 
     super();
     this.image = props.image;
-    this.state = { t:0, l:0 };
     this.inlineStyle = { backgroundImage: "url(" + this.image + ")", backgroundPosition: "0px 0px" };
     
   }
@@ -18,8 +17,8 @@ class Card extends Component {
 
     var el = ReactDOM.findDOMNode(this).getBoundingClientRect();
     this.inlineStyle['backgroundPosition'] = (-1*el.left)+"px "+(-1*el.top)+"px";
-    this.setState({ l: el.left, t: el.top});
-
+    this.forceUpdate();
+    
   }
 
   componentWillReceiveProps(nextProps) {

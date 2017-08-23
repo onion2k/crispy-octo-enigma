@@ -6,44 +6,73 @@ import Card from '../Card/Card';
 class App extends Component {
   constructor(){
     super();
-    this.state = { overrideUrl: null };
+    var images = [
+      'https://source.unsplash.com/1600x900/daily?nature',
+      'https://source.unsplash.com/1600x900/daily?technology',
+      'https://source.unsplash.com/1600x900/daily?coffee',
+      'https://source.unsplash.com/1600x900/daily?love',
+      'https://source.unsplash.com/1600x900/daily?team',
+      'https://source.unsplash.com/1600x900/daily?clothing',
+      'https://source.unsplash.com/1600x900/daily?mountains',
+      'https://source.unsplash.com/1600x900/daily?city',
+      'https://source.unsplash.com/1600x900/daily?people',
+      'https://source.unsplash.com/1600x900/daily?web',
+      'https://source.unsplash.com/1600x900/daily?water',
+      'https://source.unsplash.com/1600x900/daily?night',
+      'https://source.unsplash.com/1600x900/daily?food',
+      'https://source.unsplash.com/1600x900/daily?music',
+      'https://source.unsplash.com/1600x900/daily?office',
+      'https://source.unsplash.com/1600x900/daily?landscape',
+      'https://source.unsplash.com/1600x900/daily?rain',
+      'https://source.unsplash.com/1600x900/daily?autumn',
+      'https://source.unsplash.com/1600x900/daily?flowers',
+      'https://source.unsplash.com/1600x900/daily?road',
+      'https://source.unsplash.com/1600x900/daily?tree',
+      'https://source.unsplash.com/1600x900/daily?nasa'
+    ];
+    let tiles = this.resolveTileConstraints(images, 4, 5, 2, 2);
+    this.state = { overrideUrl: null, tiles: tiles };
+  }
+  resolveTileConstraints(images, sizew, sizeh, maxw, maxh) {
+
+    let tiles = [];
+
+    for (let t = 0; t < sizew*sizeh; t++) {
+        tiles[t] = { row: false, column: false, image: images[t]};
+    }
+
+    return tiles;
+
+    // return [
+    //   {row: false, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: true, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: true, column: true}, 
+    //   {row: false, column: false}, 
+    //   {row: true, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: true, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: false, column: false}, 
+    //   {row: false, column: false}      
+    // ];
   }
   render() {
 
-    var images = [
-      'https://source.unsplash.com/daily?nature',
-      'https://source.unsplash.com/daily?technology',
-      'https://source.unsplash.com/daily?web',
-      'https://source.unsplash.com/daily?water',
-      'https://source.unsplash.com/daily?night',
-      'https://source.unsplash.com/daily?food',
-      'https://source.unsplash.com/daily?music',
-      'https://source.unsplash.com/daily?office',
-      'https://source.unsplash.com/daily?landscape',
-      'https://source.unsplash.com/daily?rain',
-      'https://source.unsplash.com/daily?autumn',
-      'https://source.unsplash.com/daily?flowers',
-      'https://source.unsplash.com/daily?road',
-      'https://source.unsplash.com/daily?tree',
-      'https://source.unsplash.com/daily?nasa'
-    ];
+    var tiles = this.state.tiles;
+
+    var board = tiles.map((tile)=>{
+      return (
+        <Card doublerow={tile.row} doubleheight={tile.column} image={ tile.image } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: tile.image }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } } key={ tile.image }></Card>
+      );
+    })
+
     return (
       <div className="App">
-        <Card image={ images[0] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[0] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[1] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[1] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[2] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[2] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[3] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[3] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card doublerow image={ images[4] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[4] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[5] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[5] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card doublerow doubleheight image={ images[6] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[6] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[7] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[7] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card doublerow image={ images[8] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[8] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[9] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[9] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card doublerow image={ images[10] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[10] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[11] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[11] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[12] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[12] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-        <Card image={ images[13] } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: images[13] }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } }></Card>
-
+        { board }
       </div>
     );
   }

@@ -37,15 +37,48 @@ class App extends Component {
 
     let tiles = [];
 
-    for (let t = 0; t < (sizew*sizeh) - 4; t++) {
-        tiles[t] = { row: false, column: false, image: images[t]};
+    for (let t = 0; t < (sizew*sizeh); t++) {
+
+      //tiles[t] = { row: false, column: false, image: images[t] };
+
     }
 
-    tiles[2].row = true;
-    tiles[2].column = true;
-
-    tiles[5].row = true;
+    var complete = false;
+    var tile = 0;
+    var row = 0;
+    var nrow = 0;
+    var col = 0;
     
+    while (complete === false) {
+
+      var w = Math.floor(Math.random() * 3) + 1;
+      var h = Math.floor(Math.random() * 3) + 1;
+
+      if (w < 3) { w = 1 } else { w = 2; }
+      if (h < 3) { h = 1 } else { h = 2; }
+
+      if (row > 2) { w = 1; }
+
+      tiles[tile] = { row: false, column: false, image: images[tile] };
+      
+      if (w===2) {
+        tiles[tile].column = true;
+      }
+
+      if (h===2) {
+        tiles[tile].row = true;
+        nrow += w;
+      }
+
+      row += w;
+      if (row > 3) { row = nrow; col++; nrow = 0; }
+
+      tile++;
+
+      if (col > 3) { complete = true; }
+
+    }
+
     return tiles;
 
     // return [

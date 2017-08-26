@@ -9,3 +9,7 @@ First go at using React to display stuff nicely.
 * API
 * URL sharing
 * Layout building
+* Drag and drop
+* Unsplash/Pexels integration
+* Variable grid size
+* Video?

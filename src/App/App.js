@@ -105,7 +105,7 @@ class App extends Component {
 
     var board = tiles.map((tile)=>{
       return (
-        <Card doublerow={tile.row} doubleheight={tile.column} image={ tile.image } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: tile.image }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } } key={ tile.image } onMouseDown={ (e)=>{ console.log('Whee!'); } }></Card>
+        <Card doublerow={tile.row} doubleheight={tile.column} image={ tile.image } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: tile.image }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } } key={ tile.image }></Card>
       );
     })
 

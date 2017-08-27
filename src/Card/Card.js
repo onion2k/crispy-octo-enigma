@@ -18,7 +18,7 @@ class Card extends Component {
     var el = ReactDOM.findDOMNode(this).getBoundingClientRect();
     this.inlineStyle['backgroundPosition'] = (-1*el.left)+"px "+(-1*el.top)+"px";
     this.forceUpdate();
-    
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,7 +36,6 @@ class Card extends Component {
         style={ clone }
         onMouseEnter={ this.props.onMouseEnter }
         onMouseLeave={ this.props.onMouseLeave }
-        onMouseDown={ this.props.onMouseDown }
         ></div>
     );
   }

@@ -38,74 +38,71 @@ class App extends Component {
 
     let tiles = [];
 
-    for (let t = 0; t < (sizew*sizeh); t++) {
-
-      //tiles[t] = { row: false, column: false, image: images[t] };
-
-    }
-
-    var complete = false;
-    var tile = 0;
-    var row = 0;
-    var nrow = 0;
-    var col = 0;
-    
-    while (complete === false) {
-
-      var w = Math.floor(Math.random() * 3) + 1;
-      var h = Math.floor(Math.random() * 3) + 1;
-
-      if (w < 3) { w = 1 } else { w = 2; }
-      if (h < 3) { h = 1 } else { h = 2; }
-
-      if (row > 2) { w = 1; }
-
+    for (let tile = 0; tile < (sizew*sizeh); tile++) {
       tiles[tile] = { row: false, column: false, image: images[tile] };
-      
-      if (w===2) {
-        tiles[tile].column = true;
-      }
-
-      if (h===2) {
-        tiles[tile].row = true;
-        nrow += w;
-      }
-
-      row += w;
-      if (row > 3) { row = nrow; col++; nrow = 0; }
-
-      tile++;
-
-      if (col > 3) { complete = true; }
-
     }
 
+    for (let tile = 0; tile < (sizew*sizeh); tile++) {
+
+      if (tiles[tile]===null) { continue; }
+
+      var t = Math.floor(Math.random()*3);
+
+      switch (t) {
+        case 0: //1x1
+          break;
+        case 1: //1x2
+          if (tile > sizew) {
+            if (tiles[tile-sizew] !== null && tiles[tile-sizew].column!==true) {
+              continue;
+            }  
+          }
+          if ((tile+1)%4!==0) {
+            tiles[tile].column = true;
+            tiles[tile+1] =  null;            
+          }
+          break;
+        case 2: //2x1
+          if (tile > ((sizew-1)*sizeh)) {
+            continue;
+          }
+          if ((tile+1)%4!==0) {
+            tiles[tile].row = true;
+            tiles[tile+sizew] =  null;            
+          }
+          break;
+        case 3: //2x2
+          break;
+      }
+
+    }
+      
+
+    // tiles[5].row = true;
+    // tiles[5].column = true;
+    // tiles[6] = null;
+    // tiles[9] = null;
+    // tiles[10] = null;
+    
     return tiles;
 
-    // return [
-    //   {row: false, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: true, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: true, column: true}, 
-    //   {row: false, column: false}, 
-    //   {row: true, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: true, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: false, column: false}, 
-    //   {row: false, column: false}      
-    // ];
   }
   render() {
 
     var tiles = this.state.tiles;
 
     var board = tiles.map((tile)=>{
+      if (tile === null) { return null; }
       return (
-        <Card doublerow={tile.row} doubleheight={tile.column} image={ tile.image } override={ this.state.overrideUrl } onMouseEnter={ (e)=>{ this.setState({ overrideUrl: tile.image }); } } onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } } key={ tile.image }></Card>
+        <Card 
+          key={ tile.image }
+          image={ tile.image } 
+          override={ this.state.overrideUrl } 
+          doublerow={tile.row} 
+          doubleheight={tile.column} 
+          onMouseEnter={ (e)=>{ this.setState({ overrideUrl: tile.image }); } } 
+          onMouseLeave={ (e)=>{ this.setState({overrideUrl: null}); } } 
+        ></Card>
       );
     })
 

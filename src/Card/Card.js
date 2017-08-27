@@ -36,6 +36,7 @@ class Card extends Component {
         style={ clone }
         onMouseEnter={ this.props.onMouseEnter }
         onMouseLeave={ this.props.onMouseLeave }
+        onMouseDown={ this.props.onMouseDown }
         ></div>
     );
   }

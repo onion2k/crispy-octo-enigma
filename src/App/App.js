@@ -37,6 +37,7 @@ class App extends Component {
   resolveTileConstraints(images, sizew, sizeh, maxw, maxh) {
 
     let tiles = [];
+    let total = 0;
 
     for (let tile = 0; tile < (sizew*sizeh); tile++) {
       tiles[tile] = { row: false, column: false, image: images[tile] };
@@ -46,8 +47,10 @@ class App extends Component {
 
       if (tiles[tile]===null) { continue; }
 
+      total++;
+      
       var t = Math.floor(Math.random()*3);
-
+      
       switch (t) {
         case 0: //1x1
           break;
@@ -57,21 +60,28 @@ class App extends Component {
               continue;
             }  
           }
+          if (tiles[tile+1]===null) {
+            continue;
+          }
           if ((tile+1)%4!==0) {
             tiles[tile].column = true;
             tiles[tile+1] =  null;            
           }
+          total++;
           break;
         case 2: //2x1
-          if (tile > ((sizew-1)*sizeh)) {
+          if (total > ((sizew-1)*sizeh)) {
             continue;
           }
           if ((tile+1)%4!==0) {
             tiles[tile].row = true;
             tiles[tile+sizew] =  null;            
           }
+          total++;
           break;
         case 3: //2x2
+          break;
+        default:
           break;
       }
 

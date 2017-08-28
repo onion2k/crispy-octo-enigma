@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 
 import Card from '../Card/Card';
@@ -6,29 +7,26 @@ import Card from '../Card/Card';
 class App extends Component {
   constructor(){
     super();
-    var images = [
-      'https://source.unsplash.com/1600x900/daily?nature',
-      'https://source.unsplash.com/1600x900/daily?technology',
-      'https://source.unsplash.com/1600x900/daily?coffee',
-      'https://source.unsplash.com/1600x900/daily?love',
-      'https://source.unsplash.com/1600x900/daily?team',
-      'https://source.unsplash.com/1600x900/daily?clothing',
-      'https://source.unsplash.com/1600x900/daily?mountains',
-      'https://source.unsplash.com/1600x900/daily?city',
-      'https://source.unsplash.com/1600x900/daily?people',
-      'https://source.unsplash.com/1600x900/daily?web',
-      'https://source.unsplash.com/1600x900/daily?water',
-      'https://source.unsplash.com/1600x900/daily?night',
-      'https://source.unsplash.com/1600x900/daily?food',
-      'https://source.unsplash.com/1600x900/daily?music',
-      'https://source.unsplash.com/1600x900/daily?office',
-      'https://source.unsplash.com/1600x900/daily?landscape',
-      'https://source.unsplash.com/1600x900/daily?rain',
-      'https://source.unsplash.com/1600x900/daily?autumn',
-      'https://source.unsplash.com/1600x900/daily?flowers',
-      'https://source.unsplash.com/1600x900/daily?road',
-      'https://source.unsplash.com/1600x900/daily?tree',
-      'https://source.unsplash.com/1600x900/daily?nasa'
+
+    const el = document.body;
+    const dimensions = el.clientWidth+'x'+(el.clientWidth * 0.8);
+    const images = [
+      'https://source.unsplash.com/tvPvROBv0F4/'+dimensions,
+      'https://source.unsplash.com/WeYamle9fDM/'+dimensions,
+      'https://source.unsplash.com/cEeEtjedNls/'+dimensions,
+      'https://source.unsplash.com/CuQcdYCNiQM/'+dimensions,
+      'https://source.unsplash.com/AtvuPUenaeI/'+dimensions,
+      'https://source.unsplash.com/0PnQQ4hp_u8/'+dimensions,
+      'https://source.unsplash.com/dv9e60nNywM/'+dimensions,
+      'https://source.unsplash.com/vYg2mWKqQcU/'+dimensions,
+      'https://source.unsplash.com/Wyohw2iIIks/'+dimensions,
+      'https://source.unsplash.com/b4SRwTQget8/'+dimensions,
+      'https://source.unsplash.com/ps2daRcXYes/'+dimensions,
+      'https://source.unsplash.com/SVqeVMCk9PE/'+dimensions,
+      'https://source.unsplash.com/B7TDIipUuas/'+dimensions,
+      'https://source.unsplash.com/IY-gY1FK-bo/'+dimensions,
+      'https://source.unsplash.com/Ks6jZqVvvpo/'+dimensions,
+      'https://source.unsplash.com/esTP6gqfm54/'+dimensions
     ];
     let tiles = this.resolveTileConstraints(images, 4, 4, 2, 2);
     this.state = { overrideUrl: null, tiles: tiles };
